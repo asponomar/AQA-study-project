@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Common Test Suite">
+
+    <test name="Sum Test">
+        <classes>
+            <class name="testng.TestSum"/>
+        </classes>
+    </test>
+
+    <test name="Multiply Test">
+        <classes>
+            <class name="testng.TestMultiply"/>
+        </classes>
+    </test>
+
+    <test name="Substract Test">
+        <classes>
+            <class name="testng.TestSubstract"/>
+        </classes>
+    </test>
+
+    <test name="Divide Test">
+        <classes>
+            <class name="testng.TestDivide"/>
+        </classes>
+    </test>
+</suite>

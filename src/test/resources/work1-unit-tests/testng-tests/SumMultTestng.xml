@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sum and Multiply Test Suite">
+    <test name="Sum Test">
+        <classes>
+            <class name="testng.TestSum"></class>
+        </classes>
+    </test>
+
+    <test name="Multiply Test">
+        <classes>
+            <class name="testng.TestMultiply"></class>
+        </classes>
+    </test>
+</suite>

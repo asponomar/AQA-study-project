@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Substract and Divide Test Suite">
+    <test name="Substract Test">
+        <classes>
+            <class name="testng.TestSubstract"></class>
+        </classes>
+    </test>
+
+    <test name="Divide Test">
+        <classes>
+            <class name="testng.TestDivide"></class>
+        </classes>
+    </test>
+</suite>
