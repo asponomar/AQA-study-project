@@ -1,10 +1,10 @@
-package testng;
+package calculator.testng;
 
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class TestSum extends AbstractBaseTest {
+public class CalculatorTestSum extends AbstractBaseCalculatorTest {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "sumDataProvider")
     public void testSum(double a, double b, double expected) {

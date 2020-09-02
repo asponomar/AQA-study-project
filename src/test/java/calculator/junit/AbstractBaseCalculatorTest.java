@@ -1,10 +1,10 @@
-package junit;
+package calculator.junit;
 
 import com.epam.tat.module4.Calculator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-public class AbstractBaseTest {
+public class AbstractBaseCalculatorTest {
     Calculator calculator;
 
     @BeforeEach

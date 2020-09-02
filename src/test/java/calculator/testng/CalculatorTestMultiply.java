@@ -1,10 +1,10 @@
-package testng;
+package calculator.testng;
 
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class TestMultiply extends AbstractBaseTest {
+public class CalculatorTestMultiply extends AbstractBaseCalculatorTest {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "multiplyDataProvider")
     public void testMultiply(double a, double b, double expected) {

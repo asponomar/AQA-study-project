@@ -1,4 +1,4 @@
-package testng;
+package calculator.testng;
 
 import org.testng.annotations.DataProvider;
 

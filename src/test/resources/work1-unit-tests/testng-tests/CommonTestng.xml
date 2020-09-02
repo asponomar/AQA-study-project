@@ -3,25 +3,25 @@
 
     <test name="Sum Test">
         <classes>
-            <class name="testng.TestSum"/>
+            <class name="calculator.testng.CalculatorTestSum"/>
         </classes>
     </test>
 
     <test name="Multiply Test">
         <classes>
-            <class name="testng.TestMultiply"/>
+            <class name="calculator.testng.CalculatorTestMultiply"/>
         </classes>
     </test>
 
     <test name="Substract Test">
         <classes>
-            <class name="testng.TestSubstract"/>
+            <class name="calculator.testng.CalculatorTestSubstract"/>
         </classes>
     </test>
 
     <test name="Divide Test">
         <classes>
-            <class name="testng.TestDivide"/>
+            <class name="calculator.testng.CalculatorTestDivide"/>
         </classes>
     </test>
 </suite>
