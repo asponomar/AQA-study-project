@@ -6,6 +6,7 @@ import epam_jdi_page.components.HeaderMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
@@ -33,7 +34,29 @@ public class HomePageAssertionSteps implements TestData {
             assertTrue(menuItem.isDisplayed());
             assertTrue(menuItems.contains(menuItem.getText()));
         }
-
-
     }
+
+    public void benefitIconsShouldBeDisplayed() {
+        for (WebElement icon : homePage.getBenefitIcons()) {
+            assertTrue(icon.isDisplayed());
+        }
+    }
+
+    public void benefitTextsShouldBe(HashMap<Integer, String> texts) {
+        for (WebElement text : homePage.getBenefitTexts()) {
+            int imageCount = 0;
+            assertTrue(text.isDisplayed());
+            assertEquals(text.getText(), texts.get(imageCount));
+            imageCount++;
+        }
+    }
+
+//Possible realisation via List of Strings
+/*    public void benefitTextsShouldBe(List<String> texts) {
+        for (WebElement textElement : homePage.getBenefitTexts()) {
+            assertTrue(textElement.isDisplayed());
+            assertEquals(textElement.getText(), texts.get(homePage.getBenefitTexts().indexOf(textElement)));
+        }
+    }*/
 }
+

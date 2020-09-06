@@ -41,7 +41,7 @@ public class AbstractBaseTest {
 
     @BeforeMethod
     public void setUp() {
-        this.driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
 
         driver.manage().window().maximize();
 //        Implicit wait of appearing of page elements

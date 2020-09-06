@@ -1,9 +1,11 @@
 package epam_jdi_page;
 
-import epam_jdi_page.components.items.HeaderMenuItems;
 import epam_jdi_page.steps.HomePageActionSteps;
 import epam_jdi_page.steps.HomePageAssertionSteps;
 import org.testng.annotations.Test;
+
+import static epam_jdi_page.components.items.BenefitTextItems.getBenefitTextItems;
+import static epam_jdi_page.components.items.HeaderMenuItems.getHeaderMenuItems;
 
 public class HomePageTests extends AbstractBaseTest implements TestData {
     HomePageActionSteps actionStep = new HomePageActionSteps(driver);
@@ -19,7 +21,10 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
         assertStep.userNameShouldBe(USER_NAME);
         assertStep.homePageTitleShouldBe(HOME_PAGE_TITLE);
 
-        assertStep.headerMenuItemsShouldBe(HeaderMenuItems.getHeaderMenuItems());
+        assertStep.headerMenuItemsShouldBe(getHeaderMenuItems());
+
+        assertStep.benefitIconsShouldBeDisplayed();
+        assertStep.benefitTextsShouldBe(getBenefitTextItems());
 
 
     }
