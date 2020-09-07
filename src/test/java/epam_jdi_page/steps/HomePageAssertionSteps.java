@@ -5,52 +5,55 @@ import epam_jdi_page.TestData;
 import epam_jdi_page.components.HeaderMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 public class HomePageAssertionSteps implements TestData {
     private HomePage homePage;
     private HeaderMenu headerMenu;
+    private SoftAssert softAssert = new SoftAssert();
 //    private HeaderMenuItems headerMenuItems;
 
     public HomePageAssertionSteps(WebDriver driver) {
-        homePage = new HomePage(driver);
+        this.homePage = new HomePage(driver);
+        this.headerMenu = new HeaderMenu(driver);
     }
 
     public void homePageTitleShouldBe(String homePageTitle) {
-        assertEquals(homePage.getPageTitle(), homePageTitle);
+        softAssert.assertEquals(homePage.getPageTitle(), homePageTitle);
     }
 
     public void userNameShouldBe(String userName) {
-        assertEquals(headerMenu.getUserNameText(), userName);
+        softAssert.assertEquals(headerMenu.getUserNameText(), userName);
     }
 
     public void headerMenuItemsShouldBe(List<String> menuItems) {
         for (WebElement menuItem : headerMenu.getHeaderNavigationMenuItems()) {
-            assertTrue(menuItem.isDisplayed());
-            assertTrue(menuItems.contains(menuItem.getText()));
+            softAssert.assertTrue(menuItem.isDisplayed(), "Header menu item not displayed, ");
+            softAssert.assertTrue(menuItems.contains(menuItem.getText()), "Header menu item not found, ");
         }
     }
 
     public void benefitIconsShouldBeDisplayed() {
         for (WebElement icon : homePage.getBenefitIcons()) {
-            assertTrue(icon.isDisplayed());
+            softAssert.assertTrue(icon.isDisplayed(), "Benefit icons not displayed, ");
         }
     }
 
     public void benefitTextsShouldBe(HashMap<Integer, String> texts) {
+        int imageCount = 0;
         for (WebElement text : homePage.getBenefitTexts()) {
-            int imageCount = 0;
-            assertTrue(text.isDisplayed());
-            assertEquals(text.getText(), texts.get(imageCount));
+            softAssert.assertTrue(text.isDisplayed(), "Benefit text not displayed, ");
+            softAssert.assertEquals(text.getText(), texts.get(imageCount), "Benefit text is not equal to ");
             imageCount++;
         }
     }
 
+    public void assertAll() {
+        softAssert.assertAll();
+    }
 //Possible realisation via List of Strings
 /*    public void benefitTextsShouldBe(List<String> texts) {
         for (WebElement textElement : homePage.getBenefitTexts()) {
@@ -58,5 +61,7 @@ public class HomePageAssertionSteps implements TestData {
             assertEquals(textElement.getText(), texts.get(homePage.getBenefitTexts().indexOf(textElement)));
         }
     }*/
+
+
 }
 

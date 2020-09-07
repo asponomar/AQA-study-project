@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum HeaderMenuItems {
-    HOME("Home"),
-    CONTACT_FORM("Contact Form"),
-    SERVICE("Service"),
-    METALS_AND_COLORS("Metals & Colors");
+    HOME("HOME"),
+    CONTACT_FORM("CONTACT FORM"),
+    SERVICE("SERVICE"),
+    METALS_AND_COLORS("METALS & COLORS");
 
     private final String itemName;
 

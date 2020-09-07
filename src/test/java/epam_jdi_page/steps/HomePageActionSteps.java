@@ -12,11 +12,13 @@ public class HomePageActionSteps implements TestData {
     private LeftSideBarMenu leftSideBarMenu;
 
     public HomePageActionSteps(WebDriver driver) {
-        homePage = new HomePage(driver);
+        this.homePage = new HomePage(driver);
+        this.headerMenu = new HeaderMenu(driver);
+        this.leftSideBarMenu = new LeftSideBarMenu(driver);
     }
 
     public void openHomePageUrl(String homePageURL) {
-        homePage.open(HOME_PAGE_URL);
+        homePage.open(homePageURL);
     }
 
     public void login(String userName, String userPassword) {

@@ -7,14 +7,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AbstractBasePage {
     protected WebDriver driver;
-    private HeaderMenu headerMenu;
-    private LeftSideBarMenu leftSideBarMenu;
+    protected HeaderMenu headerMenu;
+    protected LeftSideBarMenu leftSideBarMenu;
 
     public AbstractBasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        headerMenu = new HeaderMenu(driver);
-        leftSideBarMenu = new LeftSideBarMenu(driver);
+        this.headerMenu = new HeaderMenu(driver);
+        this.leftSideBarMenu = new LeftSideBarMenu(driver);
     }
 
     public void open(String url) {
