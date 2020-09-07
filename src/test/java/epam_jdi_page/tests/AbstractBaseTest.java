@@ -1,4 +1,4 @@
-package epam_jdi_page;
+package epam_jdi_page.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

@@ -1,14 +1,11 @@
-package epam_jdi_page;
+package epam_jdi_page.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import epam_jdi_page.HomePage;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class LoginSeleniumTest extends AbstractBaseTest implements TestData{
+public class LoginSeleniumTest extends AbstractBaseTest implements TestData {
 
     @Test
     public void LoginTest() {
