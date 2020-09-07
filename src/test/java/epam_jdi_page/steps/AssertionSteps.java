@@ -11,20 +11,21 @@ import org.testng.asserts.SoftAssert;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomePageAssertionSteps implements TestData {
+public class AssertionSteps implements TestData {
     private HomePage homePage;
     private HeaderMenu headerMenu;
     private NavigationSideBar navigationSideBar;
     private SoftAssert softAssert = new SoftAssert();
 
-    public HomePageAssertionSteps(WebDriver driver) {
+    public AssertionSteps(WebDriver driver) {
         this.homePage = new HomePage(driver);
         this.headerMenu = new HeaderMenu(driver);
         this.navigationSideBar = new NavigationSideBar(driver);
     }
 
-    public void homePageTitleShouldBe(String homePageTitle) {
-        softAssert.assertEquals(homePage.getPageTitle(), homePageTitle);
+    //    COMMON STEPS
+    public void pageTitleShouldBe(String pageTitle) {
+        softAssert.assertEquals(homePage.getPageTitle(), pageTitle);
     }
 
     public void userNameShouldBe(String userName) {
@@ -38,6 +39,7 @@ public class HomePageAssertionSteps implements TestData {
         }
     }
 
+    //    HOME PAGE STEPS
     public void benefitIconsShouldBeDisplayed() {
         for (WebElement icon : homePage.getBenefitIcons()) {
             softAssert.assertTrue(icon.isDisplayed(), "Benefit icons not displayed, ");
