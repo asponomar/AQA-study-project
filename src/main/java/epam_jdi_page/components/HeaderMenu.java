@@ -1,6 +1,8 @@
 package epam_jdi_page.components;
 
 import epam_jdi_page.components.items.HeaderMenuItems;
+import epam_jdi_page.components.items.ServiceItems;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +34,9 @@ public class HeaderMenu extends AbstractBaseComponent {
 
     @FindBy(xpath = "//div[@class='search-field']//input")
     private WebElement searchTextField;
+
+    @FindBy(css = ".dropdown-menu>li>a")
+    private List<WebElement> serviceDropdownMenu;
 
     public HeaderMenu(WebDriver driver) {
         super(driver);
@@ -66,6 +71,22 @@ public class HeaderMenu extends AbstractBaseComponent {
             if (headerMenuElement.getText().equals(menuItem.getItemName())) {
                 headerMenuElement.click();
             }
+        }
+    }
+
+    public List<WebElement> getServiceDropdownMenu() {
+        return serviceDropdownMenu;
+    }
+
+    public void serviceItemClick(ServiceItems serviceItem) {
+        try {
+            for (WebElement item : serviceDropdownMenu) {
+                if (item.getText().equals(serviceItem.getItemName())) {
+                    item.click();
+                }
+            }
+        } catch (StaleElementReferenceException e) {
+            serviceItemClick(serviceItem);
         }
     }
 

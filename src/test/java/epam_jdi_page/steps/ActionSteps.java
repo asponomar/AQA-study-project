@@ -4,6 +4,7 @@ import epam_jdi_page.HomePage;
 import epam_jdi_page.components.HeaderMenu;
 import epam_jdi_page.components.NavigationSideBar;
 import epam_jdi_page.components.items.HeaderMenuItems;
+import epam_jdi_page.components.items.ServiceItems;
 import epam_jdi_page.tests.TestData;
 import org.openqa.selenium.WebDriver;
 
@@ -32,6 +33,10 @@ public class ActionSteps implements TestData {
 
     public void headerNavigationMenuClick(HeaderMenuItems menuItem){
         headerMenu.headerNavigationMenuItemClick(menuItem);
+    }
+
+    public void serviceMenuClick(ServiceItems serviceItem){
+        headerMenu.serviceItemClick(serviceItem);
     }
 
     // HOMEPAGE ACTIONS

@@ -99,6 +99,13 @@ public class AssertionSteps implements TestData {
         softAssert.assertTrue(homePage.getFooter().isDisplayed());
     }
 
+//    FIXME Check work of menusShouldBe methods
+    public void serviceItemsInHeaderMenuShouldBe(List<String> serviceItems) {
+        for (WebElement item : headerMenu.getServiceDropdownMenu()) {
+            softAssert.assertTrue(item.isDisplayed());
+            softAssert.assertTrue(serviceItems.contains(item.getText()));
+        }
+    }
 
     public void assertAll() {
         softAssert.assertAll();
