@@ -1,46 +1,40 @@
 package epam_jdi_page.components;
 
+import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.components.items.HeaderMenuItems;
 import epam_jdi_page.components.items.ServiceItems;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class HeaderMenu extends AbstractBaseComponent {
+import static com.codeborne.selenide.Selenide.*;
+import static org.openqa.selenium.By.*;
 
-    @FindBy(id = "user-icon")
-    private WebElement userIcon;
+public class HeaderMenu {
 
-    @FindBy(id = "name")
-    private WebElement userNameField;
+    private final SelenideElement userIcon = $(id("user-icon"));
 
-    @FindBy(id = "password")
-    private WebElement userPassword;
+    private final SelenideElement userNameField = $(id("name"));
 
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
+    private final SelenideElement userPassword = $(id("password"));
 
-    @FindBy(id = "user-name")
-    private WebElement userName;
+    private final SelenideElement loginButton = $(id("login-button"));
 
-    @FindBy(css = ".m-l8>li")
-    private List<WebElement> headerNavigationMenu;
+    private final SelenideElement userName = $(id("user-name"));
 
-    @FindBy(className = "icon-search")
-    private WebElement searchIcon;
+    private final List<SelenideElement> headerNavigationMenu = $$(".m-l8>li");
 
-    @FindBy(xpath = "//div[@class='search-field']//input")
-    private WebElement searchTextField;
+    private final SelenideElement searchIcon = $(className("icon-search"));
 
-    @FindBy(css = ".dropdown-menu>li>a")
-    private List<WebElement> serviceDropdownMenu;
+    private final SelenideElement searchTextField = $(xpath("//div[@class='search-field']//input"));
 
-    public HeaderMenu(WebDriver driver) {
-        super(driver);
+    private final List<SelenideElement> serviceDropdownMenu = $$(".dropdown-menu>li>a");
+
+
+    public HeaderMenu() {
+        page(this);
     }
+
 
     public void userIconClick() {
         userIcon.click();
@@ -62,27 +56,29 @@ public class HeaderMenu extends AbstractBaseComponent {
         return userName.getText();
     }
 
-    public List<WebElement> getHeaderNavigationMenuItems() {
+    public List<SelenideElement> getHeaderNavigationMenuItems() {
         return headerNavigationMenu;
     }
 
     public void headerNavigationMenuItemClick(HeaderMenuItems menuItem) {
-        for (WebElement headerMenuElement : headerNavigationMenu) {
-            if (headerMenuElement.getText().equals(menuItem.getItemName())) {
-                headerMenuElement.click();
+        for (SelenideElement item : headerNavigationMenu) {
+            if (item.getText().equals(menuItem.getItemName())) {
+                item.click();
+                break;
             }
         }
     }
 
-    public List<WebElement> getServiceDropdownMenu() {
+    public List<SelenideElement> getServiceDropdownMenu() {
         return serviceDropdownMenu;
     }
 
     public void serviceItemClick(ServiceItems serviceItem) {
         try {
-            for (WebElement item : serviceDropdownMenu) {
+            for (SelenideElement item : serviceDropdownMenu) {
                 if (item.getText().equals(serviceItem.getItemName())) {
                     item.click();
+                    break;
                 }
             }
         } catch (StaleElementReferenceException e) {

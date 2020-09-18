@@ -11,9 +11,10 @@ public enum ServiceItems {
     SIMPLE_TABLE("SIMPLE TABLE"),
     USER_TABLE("USER TABLE"),
     TABLE_WITH_PAGES("TABLE WITH PAGES"),
-    DIFFERENT_ELEMENTS("DIFFERENT ELEMENTS");
+    DIFFERENT_ELEMENTS("DIFFERENT ELEMENTS"),
+    PERFORMANCE("PERFORMANCE");
 
-    private String itemName;
+    private final String itemName;
 
     ServiceItems(String itemName) {
         this.itemName = itemName;

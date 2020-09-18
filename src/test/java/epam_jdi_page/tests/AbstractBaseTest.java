@@ -1,23 +1,33 @@
 package epam_jdi_page.tests;
 
+import com.codeborne.selenide.AssertionMode;
+import com.codeborne.selenide.Browsers;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import epam_jdi_page.steps.ActionSteps;
+import epam_jdi_page.steps.AssertionSteps;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
-public class AbstractBaseTest {
-    WebDriver driver;
+import static com.codeborne.selenide.Selenide.*;
 
-    @BeforeSuite
+public class AbstractBaseTest implements TestData {
+    protected ActionSteps actionStep;
+    protected AssertionSteps assertStep;
+
+/*    @BeforeSuite
     public void suiteSetup() {
-        WebDriverManager.firefoxdriver().setup();
+
 
 //        Creating WebDriver from file without BoniGarcia WebDriverManager
-/*        System.setProperty("webdriver.gecko.driver", this
+*//*        System.setProperty("webdriver.gecko.driver", this
                 .getClass()
                 .getClassLoader().getResource("drivers/geckodriver")
                 .getPath());
@@ -25,10 +35,10 @@ public class AbstractBaseTest {
         System.setProperty("webdriver.chrome.driver", this
                 .getClass()
                 .getClassLoader().getResource("drivers/chromedriver")
-                .getPath());*/
+                .getPath());*//*
 
 //        FIXME Trying to create ChromeDriver gives error in Linux
-/*        WebDriverManager.chromedriver().setup();
+*//*        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized"); // open Browser in maximized mode
@@ -36,25 +46,24 @@ public class AbstractBaseTest {
         options.addArguments("--disable-extensions"); // disabling extensions
         options.addArguments("--disable-gpu"); // applicable to windows os only
         options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        options.addArguments("--no-sandbox"); // Bypass OS security model*/
+        options.addArguments("--no-sandbox"); // Bypass OS security model*//*
+    }*/
+
+    @BeforeTest
+    public void setUp() {
+        Configuration.browser = Browsers.FIREFOX;
+        Configuration.timeout = 2000;
+        Configuration.assertionMode = AssertionMode.STRICT;
+        Configuration.startMaximized = true;
+        Configuration.screenshots = false;
     }
 
     @BeforeMethod
-    public void setUp() {
-        driver = new FirefoxDriver();
-
-        driver.manage().window().maximize();
-//        Implicit wait of appearing of page elements
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
-//        Implicit wait of page loading
-        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
-//        Implicit wait of script loading
-        driver.manage().timeouts().setScriptTimeout(3000, TimeUnit.MILLISECONDS);
+    public void methodSetUp(){
+        open(HOME_PAGE_URL);
+        this.actionStep = new ActionSteps();
+        this.assertStep = new AssertionSteps();
     }
 
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-    }
 
 }

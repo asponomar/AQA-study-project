@@ -1,12 +1,11 @@
 package epam_jdi_page;
 
-import org.openqa.selenium.WebDriver;
+import static com.codeborne.selenide.Selenide.page;
 
 public class DifferentElementsPage extends AbstractBasePage {
 
 
-
-    public DifferentElementsPage(WebDriver driver) {
-        super(driver);
+    public DifferentElementsPage() {
+        page(this);
     }
 }

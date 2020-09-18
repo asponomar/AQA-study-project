@@ -1,17 +1,25 @@
 package epam_jdi_page.components;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
 
-public class NavigationSideBar extends AbstractBaseComponent {
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.page;
 
-    @FindBy(className = ".sidebar-menu>li")
-    private List<WebElement> navigationBarMenu;
+public class NavigationSideBar {
 
-    public NavigationSideBar(WebDriver driver) {
-        super(driver);
+    private final List<SelenideElement> navigationBarMenu = $$(".sidebar-menu>li");
+
+
+    public NavigationSideBar() {
+        page(this);
+    }
+
+
+    public List<SelenideElement> getNavigationBarMenu() {
+        return navigationBarMenu;
     }
 }
+
+

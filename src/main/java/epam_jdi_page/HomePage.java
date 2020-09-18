@@ -1,87 +1,70 @@
 package epam_jdi_page;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
 
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
+import static org.openqa.selenium.By.*;
+
 public class HomePage extends AbstractBasePage {
 
-    @FindBy(className = "benefit-icon")
-    private List<WebElement> benefitIcons;
+    private final List<SelenideElement> benefitIcons = $$(className("benefit-icon"));
 
-    @FindBy(className = "benefit-txt")
-    private List<WebElement> benefitTexts;
+    private final List<SelenideElement> benefitTexts = $$(className("benefit-txt"));
 
-    @FindBy(name = "main-title")
-    private WebElement mainTitleText;
+    private final SelenideElement mainTitleText = $(name("main-title"));
 
-    @FindBy(name = "jdi-text")
-    private WebElement jdiText;
+    private final SelenideElement jdiText = $(name("jdi-text"));
 
-    @FindBy(id = "iframe")
-    private WebElement iFrame;
+    private final SelenideElement iFrame = $(id("iframe"));
 
-    @FindBy(id = "epam_logo")
-    private WebElement epamLogo;
+    private final SelenideElement epamLogo = $(id("epam_logo"));
 
-    @FindBy(linkText = "JDI GITHUB")
-    private WebElement jdiGithubLink;
+    private final SelenideElement jdiGithubLink = $(linkText("JDI GITHUB"));
 
-    @FindBy(name = "navigation-sidebar")
-    private WebElement navigationSidebar;
+    private final SelenideElement navigationSidebar = $(name("navigation-sidebar"));
 
-    @FindBy(tagName = "footer")
-    private WebElement footer;
+    private final SelenideElement footer = $(tagName("footer"));
 
-    //        Still don't uderstand how PageFactory works
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
 
-    public List<WebElement> getBenefitIcons() {
+
+    public List<SelenideElement> getBenefitIcons() {
         return benefitIcons;
     }
 
-    public List<WebElement> getBenefitTexts() {
+    public List<SelenideElement> getBenefitTexts() {
         return benefitTexts;
     }
 
-    public WebElement getMainTitleText() {
+    public SelenideElement getMainTitleText() {
         return mainTitleText;
     }
 
-    public WebElement getJdiText() {
+    public SelenideElement getJdiText() {
         return jdiText;
     }
 
-    public WebElement getiFrame() {
+    public SelenideElement getIFrame() {
         return iFrame;
     }
 
-    public WebElement getEpamLogo() {
+    public SelenideElement getEpamLogo() {
         return epamLogo;
     }
 
-    public WebElement getJdiGithubLink() {
+    public SelenideElement getJdiGithubLink() {
         return jdiGithubLink;
     }
 
-    public WebElement getNavigationSidebar() {
+    public SelenideElement getNavigationSidebar() {
         return navigationSidebar;
     }
 
-    public WebElement getFooter() {
+    public SelenideElement getFooter() {
         return footer;
     }
 
-    public void switchToIFrame() {
-        driver.switchTo().frame(iFrame);
-    }
-
-    public void switchToParentFrame() {
-        driver.switchTo().parentFrame();
-    }
 }
 

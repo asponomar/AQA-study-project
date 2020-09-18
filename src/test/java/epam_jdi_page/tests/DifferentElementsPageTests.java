@@ -1,24 +1,13 @@
 package epam_jdi_page.tests;
 
 import epam_jdi_page.components.items.HeaderMenuItems;
-import epam_jdi_page.components.items.ServiceItems;
-import epam_jdi_page.steps.ActionSteps;
-import epam_jdi_page.steps.AssertionSteps;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static epam_jdi_page.components.items.HeaderMenuItems.getHeaderMenuItems;
-import static epam_jdi_page.components.items.ServiceItems.*;
+import static epam_jdi_page.components.items.ServiceItems.DIFFERENT_ELEMENTS;
+import static epam_jdi_page.components.items.ServiceItems.getServiceItems;
 
 public class DifferentElementsPageTests extends AbstractBaseTest implements TestData {
-    ActionSteps actionStep;
-    AssertionSteps assertStep;
-
-    @BeforeMethod
-    public void homePageTestSetUp() {
-        actionStep = new ActionSteps(driver);
-        assertStep = new AssertionSteps(driver);
-    }
 
     @Test
     public void differentElementsPageTest() {

@@ -1,31 +1,21 @@
 package epam_jdi_page.steps;
 
-import epam_jdi_page.HomePage;
-import epam_jdi_page.components.HeaderMenu;
-import epam_jdi_page.components.NavigationSideBar;
 import epam_jdi_page.tests.TestData;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.List;
 
-public class AssertionSteps implements TestData {
-    private HomePage homePage;
-    private HeaderMenu headerMenu;
-    private NavigationSideBar navigationSideBar;
-    private SoftAssert softAssert = new SoftAssert();
+import static com.codeborne.selenide.Selenide.title;
 
-    public AssertionSteps(WebDriver driver) {
-        this.homePage = new HomePage(driver);
-        this.headerMenu = new HeaderMenu(driver);
-        this.navigationSideBar = new NavigationSideBar(driver);
-    }
+public class AssertionSteps extends AbstractBaseSteps implements TestData {
+
+    private SoftAssert softAssert = new SoftAssert();
 
     //    COMMON STEPS
     public void pageTitleShouldBe(String pageTitle) {
-        softAssert.assertEquals(homePage.getPageTitle(), pageTitle);
+        softAssert.assertEquals(title(), pageTitle);
     }
 
     public void userNameShouldBe(String userName) {
@@ -72,7 +62,7 @@ public class AssertionSteps implements TestData {
     }
 
     public void iFrameshouldExist() {
-        softAssert.assertTrue(homePage.getiFrame().isDisplayed());
+        softAssert.assertTrue(homePage.getIFrame().isDisplayed());
     }
 
     public void epamLogoShouldBeDisplayed() {
@@ -99,7 +89,7 @@ public class AssertionSteps implements TestData {
         softAssert.assertTrue(homePage.getFooter().isDisplayed());
     }
 
-//    FIXME Check work of menusShouldBe methods
+    //    FIXME Check work of menusShouldBe methods
     public void serviceItemsInHeaderMenuShouldBe(List<String> serviceItems) {
         for (WebElement item : headerMenu.getServiceDropdownMenu()) {
             softAssert.assertTrue(item.isDisplayed());

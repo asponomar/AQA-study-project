@@ -1,9 +1,13 @@
 package epam_jdi_page.components;
 
-import org.openqa.selenium.WebDriver;
+import static com.codeborne.selenide.Selenide.page;
 
-public class Footer extends AbstractBaseComponent {
-    public Footer(WebDriver driver) {
-        super(driver);
+public class Footer {
+
+
+    public Footer() {
+        page(this);
     }
+
+
 }

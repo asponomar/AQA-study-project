@@ -1,27 +1,17 @@
 package epam_jdi_page.steps;
 
-import epam_jdi_page.HomePage;
-import epam_jdi_page.components.HeaderMenu;
-import epam_jdi_page.components.NavigationSideBar;
 import epam_jdi_page.components.items.HeaderMenuItems;
 import epam_jdi_page.components.items.ServiceItems;
 import epam_jdi_page.tests.TestData;
-import org.openqa.selenium.WebDriver;
 
-public class ActionSteps implements TestData {
-    private HomePage homePage;
-    private HeaderMenu headerMenu;
-    private NavigationSideBar navigationSideBar;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.switchTo;
 
-    public ActionSteps(WebDriver driver) {
-        this.homePage = new HomePage(driver);
-        this.headerMenu = new HeaderMenu(driver);
-        this.navigationSideBar = new NavigationSideBar(driver);
-    }
+public class ActionSteps extends AbstractBaseSteps implements TestData {
 
     // COMMON STEPS
     public void openPageUrl(String pageURL) {
-        homePage.open(pageURL);
+        open(pageURL);
     }
 
     public void login(String userName, String userPassword) {
@@ -31,21 +21,21 @@ public class ActionSteps implements TestData {
         headerMenu.loginButtonClick();
     }
 
-    public void headerNavigationMenuClick(HeaderMenuItems menuItem){
+    public void headerNavigationMenuClick(HeaderMenuItems menuItem) {
         headerMenu.headerNavigationMenuItemClick(menuItem);
     }
 
-    public void serviceMenuClick(ServiceItems serviceItem){
+    public void serviceMenuClick(ServiceItems serviceItem) {
         headerMenu.serviceItemClick(serviceItem);
     }
 
     // HOMEPAGE ACTIONS
     public void switchToIframe() {
-        homePage.switchToIFrame();
+        switchTo().frame(homePage.getIFrame());
     }
 
     public void switchToParentFrame() {
-        homePage.switchToParentFrame();
+        switchTo().parentFrame();
     }
 
 }

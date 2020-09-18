@@ -14,7 +14,7 @@ public enum BenefitTextItems {
             "some external projects),\n" +
             "wish to get more…");
 
-    private String text;
+    private final String text;
 
     BenefitTextItems(String text) {
         this.text = text;
