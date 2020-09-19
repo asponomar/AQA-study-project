@@ -52,8 +52,8 @@ public class HeaderMenu {
         loginButton.click();
     }
 
-    public String getUserNameText() {
-        return userName.getText();
+    public SelenideElement getUserName() {
+        return userName;
     }
 
     public List<SelenideElement> getHeaderNavigationMenuItems() {

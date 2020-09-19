@@ -1,104 +1,87 @@
 package epam_jdi_page.steps;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.tests.TestData;
-import org.openqa.selenium.WebElement;
-import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.CollectionCondition.textsInAnyOrder;
+import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class AssertionSteps extends AbstractBaseSteps implements TestData {
 
-    private SoftAssert softAssert = new SoftAssert();
-
     //    COMMON STEPS
     public void pageTitleShouldBe(String pageTitle) {
-        softAssert.assertEquals(title(), pageTitle);
+        $("title").shouldBe(attribute("text", pageTitle));
     }
 
     public void userNameShouldBe(String userName) {
-        softAssert.assertEquals(headerMenu.getUserNameText(), userName);
+        headerMenu.getUserName().shouldBe(text(userName));
     }
 
     public void headerMenuItemsShouldBe(List<String> menuItems) {
-        for (WebElement menuItem : headerMenu.getHeaderNavigationMenuItems()) {
-            softAssert.assertTrue(menuItem.isDisplayed(), "Header menu item not displayed, ");
-            softAssert.assertTrue(menuItems.contains(menuItem.getText()), "Header menu item not found, ");
-        }
+        headerMenu.getHeaderNavigationMenuItems().forEach(item -> item.is(visible));
+        $$(headerMenu.getHeaderNavigationMenuItems()).shouldHave(textsInAnyOrder(menuItems));
     }
 
     //    HOME PAGE STEPS
     public void benefitIconsShouldBeDisplayed() {
-        for (WebElement icon : homePage.getBenefitIcons()) {
-            softAssert.assertTrue(icon.isDisplayed(), "Benefit icons not displayed, ");
-        }
+        homePage.getBenefitIcons().forEach(SelenideElement::isDisplayed);
     }
 
     public void benefitTextsShouldBe(HashMap<Integer, String> texts) {
         int imageCount = 0;
-        for (WebElement text : homePage.getBenefitTexts()) {
-            softAssert.assertTrue(text.isDisplayed(), "Benefit text not displayed, ");
-            softAssert.assertEquals(text.getText(), texts.get(imageCount), "Benefit text is not equal to ");
+        for (SelenideElement currentBenefitText : homePage.getBenefitTexts()) {
+            currentBenefitText.isDisplayed();
+            currentBenefitText.shouldBe(Condition.exactText(texts.get(imageCount)));
             imageCount++;
         }
     }
 
-    //Possible realisation via List of Strings
-/*    public void benefitTextsShouldBe(List<String> texts) {
-        for (WebElement textElement : homePage.getBenefitTexts()) {
-            assertTrue(textElement.isDisplayed());
-            assertEquals(textElement.getText(), texts.get(homePage.getBenefitTexts().indexOf(textElement)));
-        }
-    }*/
-
-    public void mainTitleTextShouldBe(String text) {
-        softAssert.assertEquals(homePage.getMainTitleText().getText(), text);
+    public void mainTitleTextShouldBe(String titleText) {
+        homePage.getMainTitleText().shouldBe(text(titleText));
     }
 
-    public void jdiTextShouldBe(String text) {
-        softAssert.assertEquals(homePage.getJdiText().getText(), text);
+    public void jdiTextShouldBe(String jdiText) {
+        homePage.getJdiText().shouldBe(text(jdiText));
     }
 
-    public void iFrameshouldExist() {
-        softAssert.assertTrue(homePage.getIFrame().isDisplayed());
+    public void iFrameShouldExist() {
+        homePage.getIFrame().exists();
     }
 
     public void epamLogoShouldBeDisplayed() {
-        softAssert.assertTrue(homePage.getEpamLogo().isDisplayed());
+        homePage.getEpamLogo().isDisplayed();
     }
 
     public void jdiGithubLinkIsDisplayed() {
-        softAssert.assertTrue(homePage.getJdiGithubLink().isDisplayed());
+        homePage.getJdiGithubLink().isDisplayed();
     }
 
-    public void jdiGithubLinkTextShouldBe(String text) {
-        softAssert.assertEquals(homePage.getJdiGithubLink().getText(), text);
+    public void jdiGithubLinkTextShouldBe(String gitHubLinkText) {
+        homePage.getJdiGithubLink().shouldBe(text(gitHubLinkText));
     }
 
     public void jdiGitHubLinkSHouldBe(String link) {
-        softAssert.assertEquals(homePage.getJdiGithubLink().getAttribute("href"), link);
+        homePage.getJdiGithubLink().shouldBe(Condition.attribute("href", link));
+
     }
 
     public void navigationBarisDisplayed() {
-        softAssert.assertTrue(homePage.getNavigationSidebar().isDisplayed());
+        homePage.getNavigationSidebar().isDisplayed();
     }
 
     public void footerIsDisplayed() {
-        softAssert.assertTrue(homePage.getFooter().isDisplayed());
+        homePage.getFooter().exists();
     }
 
-    //    FIXME Check work of menusShouldBe methods
     public void serviceItemsInHeaderMenuShouldBe(List<String> serviceItems) {
-        for (WebElement item : headerMenu.getServiceDropdownMenu()) {
-            softAssert.assertTrue(item.isDisplayed());
-            softAssert.assertTrue(serviceItems.contains(item.getText()));
-        }
-    }
-
-    public void assertAll() {
-        softAssert.assertAll();
+        headerMenu.getServiceDropdownMenu().forEach(item -> item.is(visible));
+        $$(headerMenu.getServiceDropdownMenu()).shouldHave(textsInAnyOrder(serviceItems));
     }
 
 }

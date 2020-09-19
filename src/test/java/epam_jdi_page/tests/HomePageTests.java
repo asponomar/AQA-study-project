@@ -25,7 +25,7 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
         assertStep.mainTitleTextShouldBe(MAIN_TITLE_TEXT);
         assertStep.jdiTextShouldBe(JDI_TEXT);
 
-        assertStep.iFrameshouldExist();
+        assertStep.iFrameShouldExist();
         actionStep.switchToIframe();
         assertStep.epamLogoShouldBeDisplayed();
         actionStep.switchToParentFrame();
@@ -38,8 +38,6 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
 
         assertStep.navigationBarisDisplayed();
         assertStep.footerIsDisplayed();
-
-        assertStep.assertAll();
 
     }
 }
