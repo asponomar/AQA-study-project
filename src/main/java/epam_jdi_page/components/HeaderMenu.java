@@ -1,8 +1,8 @@
 package epam_jdi_page.components;
 
 import com.codeborne.selenide.SelenideElement;
-import epam_jdi_page.components.items.HeaderMenuItems;
-import epam_jdi_page.components.items.ServiceItems;
+import epam_jdi_page.items.HeaderMenuItems;
+import epam_jdi_page.items.ServiceItems;
 import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.List;

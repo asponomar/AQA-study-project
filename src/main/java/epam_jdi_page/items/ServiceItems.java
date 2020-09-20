@@ -1,4 +1,4 @@
-package epam_jdi_page.components.items;
+package epam_jdi_page.items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public enum ServiceItems {
 
     public static List<String> getServiceItems() {
         ArrayList<String> result = new ArrayList<>();
-        for (ServiceItems menuItem : ServiceItems.values()) {
+        for (ServiceItems menuItem : values()) {
             result.add(menuItem.itemName);
         }
         return result;

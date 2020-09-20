@@ -1,4 +1,4 @@
-package epam_jdi_page.components.items;
+package epam_jdi_page.items;
 
 import java.util.HashMap;
 
@@ -23,7 +23,7 @@ public enum BenefitTextItems {
     public static HashMap<Integer, String> getBenefitTextItems() {
         HashMap<Integer, String> result = new HashMap<>();
         int imageCount = 0;
-        for (BenefitTextItems item : BenefitTextItems.values()) {
+        for (BenefitTextItems item : values()) {
             result.put(imageCount, item.text);
             imageCount++;
         }

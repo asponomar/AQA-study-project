@@ -1,7 +1,7 @@
 package epam_jdi_page.steps;
 
-import epam_jdi_page.components.items.HeaderMenuItems;
-import epam_jdi_page.components.items.ServiceItems;
+import epam_jdi_page.items.HeaderMenuItems;
+import epam_jdi_page.items.ServiceItems;
 import epam_jdi_page.tests.TestData;
 
 import static com.codeborne.selenide.Selenide.open;

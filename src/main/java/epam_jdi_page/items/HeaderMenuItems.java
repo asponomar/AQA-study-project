@@ -1,4 +1,4 @@
-package epam_jdi_page.components.items;
+package epam_jdi_page.items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public enum HeaderMenuItems {
 
     public static List<String> getHeaderMenuItems() {
         ArrayList<String> result = new ArrayList<>();
-        for (HeaderMenuItems menuItem : HeaderMenuItems.values()) {
+        for (HeaderMenuItems menuItem : values()) {
             result.add(menuItem.itemName);
         }
         return result;

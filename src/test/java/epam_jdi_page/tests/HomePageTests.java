@@ -2,8 +2,8 @@ package epam_jdi_page.tests;
 
 import org.testng.annotations.Test;
 
-import static epam_jdi_page.components.items.BenefitTextItems.getBenefitTextItems;
-import static epam_jdi_page.components.items.HeaderMenuItems.getHeaderMenuItems;
+import static epam_jdi_page.items.BenefitTextItems.getBenefitTextItems;
+import static epam_jdi_page.items.HeaderMenuItems.getHeaderMenuItems;
 
 public class HomePageTests extends AbstractBaseTest implements TestData {
 

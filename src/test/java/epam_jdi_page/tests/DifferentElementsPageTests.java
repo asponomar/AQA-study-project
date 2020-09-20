@@ -1,11 +1,11 @@
 package epam_jdi_page.tests;
 
-import epam_jdi_page.components.items.HeaderMenuItems;
+import epam_jdi_page.items.HeaderMenuItems;
 import org.testng.annotations.Test;
 
-import static epam_jdi_page.components.items.HeaderMenuItems.getHeaderMenuItems;
-import static epam_jdi_page.components.items.ServiceItems.DIFFERENT_ELEMENTS;
-import static epam_jdi_page.components.items.ServiceItems.getServiceItems;
+import static epam_jdi_page.items.HeaderMenuItems.getHeaderMenuItems;
+import static epam_jdi_page.items.ServiceItems.DIFFERENT_ELEMENTS;
+import static epam_jdi_page.items.ServiceItems.getServiceItems;
 
 public class DifferentElementsPageTests extends AbstractBaseTest implements TestData {
 
