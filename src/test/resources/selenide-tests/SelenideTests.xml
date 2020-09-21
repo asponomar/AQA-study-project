@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Common Test Suite">
+
+    <test name="Home Page Test">
+        <classes>
+            <class name="epam_jdi_page.tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Differents Elements Page Test">
+        <classes>
+            <class name="epam_jdi_page.tests.DifferentElementsPageTests"/>
+        </classes>
+    </test>
+
+</suite>

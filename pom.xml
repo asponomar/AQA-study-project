@@ -31,10 +31,10 @@
         <profile>
             <id>CommonTestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/work1-unit-tests/testng-tests/CommonTestng.xml</suite.file>
+                <suite.file>src/test/resources/unit-tests/testng-tests/CommonTestng.xml</suite.file>
             </properties>
         </profile>
 
@@ -44,7 +44,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/work1-unit-tests/testng-tests/SumMultTestng.xml</suite.file>
+                <suite.file>src/test/resources/unit-tests/testng-tests/SumMultTestng.xml</suite.file>
             </properties>
         </profile>
 
@@ -54,7 +54,17 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/work1-unit-tests/testng-tests/SubDivTestng.xml</suite.file>
+                <suite.file>src/test/resources/unit-tests/testng-tests/SubDivTestng.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SelenideTestSuite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/selenide-tests/SelenideTests.xml</suite.file>
             </properties>
         </profile>
     </profiles>

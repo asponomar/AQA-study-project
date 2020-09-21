@@ -22,6 +22,8 @@ public class HeaderMenu {
 
     private final SelenideElement userName = $(id("user-name"));
 
+    private final SelenideElement logoutButton = $(cssSelector(".logout span"));
+
     private final List<SelenideElement> headerNavigationMenu = $$(".m-l8>li");
 
     private final SelenideElement searchIcon = $(className("icon-search"));
@@ -54,6 +56,10 @@ public class HeaderMenu {
 
     public SelenideElement getUserName() {
         return userName;
+    }
+
+    public SelenideElement getLogoutButton() {
+        return logoutButton;
     }
 
     public List<SelenideElement> getHeaderNavigationMenuItems() {

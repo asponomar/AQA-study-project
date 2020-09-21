@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestsCalculator extends AbstractBaseCalculatorTest {
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/work1-unit-tests/junit-tests/SumParameters.csv")
+    @CsvFileSource(resources = "/unit-tests/junit-tests/SumParameters.csv")
     public void testSum(double a, double b, double expected) {
         System.out.println("Run the Sum Test");
         double actual = calculator.sum(a, b);
@@ -16,7 +16,7 @@ public class TestsCalculator extends AbstractBaseCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/work1-unit-tests/junit-tests/MultParameters.csv")
+    @CsvFileSource(resources = "/unit-tests/junit-tests/MultParameters.csv")
     public void testMultiply(double a, double b, double expected) {
         System.out.println("Run the Multiply Test");
         double actual = calculator.mult(a, b);
@@ -24,7 +24,7 @@ public class TestsCalculator extends AbstractBaseCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/work1-unit-tests/junit-tests/DivideParameters.csv")
+    @CsvFileSource(resources = "/unit-tests/junit-tests/DivideParameters.csv")
     public void testDivide(double a, double b, double expected) {
         System.out.println("Run the Divide Test");
         double actual = calculator.div(a, b);
@@ -32,7 +32,7 @@ public class TestsCalculator extends AbstractBaseCalculatorTest {
     }
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/work1-unit-tests/junit-tests/SubstractParameters.csv")
+    @CsvFileSource(resources = "/unit-tests/junit-tests/SubstractParameters.csv")
     public void testSubstract(double a, double b, double expected) {
         System.out.println("Run the Substract Test");
         double actual = calculator.sub(a, b);

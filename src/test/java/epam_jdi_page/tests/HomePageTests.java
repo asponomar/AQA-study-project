@@ -39,5 +39,6 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
         assertStep.navigationBarisDisplayed();
         assertStep.footerIsDisplayed();
 
+        actionStep.logout();
     }
 }

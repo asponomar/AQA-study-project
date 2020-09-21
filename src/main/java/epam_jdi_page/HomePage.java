@@ -24,11 +24,6 @@ public class HomePage extends AbstractBasePage {
 
     private final SelenideElement jdiGithubLink = $(linkText("JDI GITHUB"));
 
-    private final SelenideElement navigationSidebar = $(name("navigation-sidebar"));
-
-    private final SelenideElement footer = $(tagName("footer"));
-
-
 
     public List<SelenideElement> getBenefitIcons() {
         return benefitIcons;
@@ -56,14 +51,6 @@ public class HomePage extends AbstractBasePage {
 
     public SelenideElement getJdiGithubLink() {
         return jdiGithubLink;
-    }
-
-    public SelenideElement getNavigationSidebar() {
-        return navigationSidebar;
-    }
-
-    public SelenideElement getFooter() {
-        return footer;
     }
 
 }

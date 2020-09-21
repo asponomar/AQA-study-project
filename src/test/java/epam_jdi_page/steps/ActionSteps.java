@@ -1,5 +1,6 @@
 package epam_jdi_page.steps;
 
+import com.codeborne.selenide.Condition;
 import epam_jdi_page.items.HeaderMenuItems;
 import epam_jdi_page.items.ServiceItems;
 import epam_jdi_page.tests.TestData;
@@ -19,6 +20,13 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
         headerMenu.setTextUserNameField(userName);
         headerMenu.setTextUserPasswordField(userPassword);
         headerMenu.loginButtonClick();
+    }
+
+    public void logout() {
+        if (!headerMenu.getLogoutButton().is(Condition.visible)) {
+            headerMenu.getUserName().click();
+        }
+        headerMenu.getLogoutButton().click();
     }
 
     public void headerNavigationMenuClick(HeaderMenuItems menuItem) {

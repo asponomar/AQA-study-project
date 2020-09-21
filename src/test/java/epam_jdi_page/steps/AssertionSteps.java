@@ -3,6 +3,7 @@ package epam_jdi_page.steps;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.tests.TestData;
+import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,25 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
     public void headerMenuItemsShouldBe(List<String> menuItems) {
         headerMenu.getHeaderNavigationMenuItems().forEach(item -> item.is(visible));
         $$(headerMenu.getHeaderNavigationMenuItems()).shouldHave(textsInAnyOrder(menuItems));
+    }
+
+    public void navigationBarisDisplayed() {
+        navigationSideBar.getNavigationSidebar().isDisplayed();
+    }
+
+    public void footerIsDisplayed() {
+        footer.getFooter().isDisplayed();
+    }
+
+    public void serviceItemsInHeaderMenuShouldBe(List<String> serviceItems) {
+        SoftAssert softAssert = new SoftAssert();
+        boolean cond;
+        for (SelenideElement item : headerMenu.getServiceDropdownMenu()) {
+            cond = serviceItems.contains(item.innerText().toUpperCase().trim());
+            item.is(visible);
+            softAssert.assertTrue(cond);
+        }
+        softAssert.assertAll();
     }
 
     //    HOME PAGE STEPS
@@ -71,18 +91,6 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
 
     }
 
-    public void navigationBarisDisplayed() {
-        homePage.getNavigationSidebar().isDisplayed();
-    }
-
-    public void footerIsDisplayed() {
-        homePage.getFooter().exists();
-    }
-
-    public void serviceItemsInHeaderMenuShouldBe(List<String> serviceItems) {
-        headerMenu.getServiceDropdownMenu().forEach(item -> item.is(visible));
-        $$(headerMenu.getServiceDropdownMenu()).shouldHave(textsInAnyOrder(serviceItems));
-    }
 
 }
 

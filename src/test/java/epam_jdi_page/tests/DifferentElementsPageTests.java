@@ -24,5 +24,6 @@ public class DifferentElementsPageTests extends AbstractBaseTest implements Test
         actionStep.serviceMenuClick(DIFFERENT_ELEMENTS);
         assertStep.headerMenuItemsShouldBe(getHeaderMenuItems());
 
+        actionStep.logout();
     }
 }
