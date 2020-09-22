@@ -4,6 +4,12 @@ public interface TestData {
     String HOME_PAGE_URL = "https://epam.github.io/JDI/index.html";
     String HOME_PAGE_TITLE = "Home Page";
 
+    String DIFFERENT_ELEMENTS_PAGE_TITLE = "Different Elements";
+
+    String TABLE_PAGES_TITLE = "Table with pages";
+
+    String METAL_COLORS_PAGE_TITLE = "Metal and Colors";
+
     String USER_LOGIN = "epam";
     String USER_PASSWORD = "1234";
     String USER_NAME = "PITER CHAILOVSKII";

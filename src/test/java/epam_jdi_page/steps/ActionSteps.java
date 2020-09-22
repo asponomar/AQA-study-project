@@ -2,7 +2,7 @@ package epam_jdi_page.steps;
 
 import com.codeborne.selenide.Condition;
 import epam_jdi_page.items.HeaderMenuItems;
-import epam_jdi_page.items.ServiceItems;
+import epam_jdi_page.items.ServiceMenuItems;
 import epam_jdi_page.tests.TestData;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -33,7 +33,7 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
         headerMenu.headerNavigationMenuItemClick(menuItem);
     }
 
-    public void serviceMenuClick(ServiceItems serviceItem) {
+    public void serviceMenuClick(ServiceMenuItems serviceItem) {
         headerMenu.serviceItemClick(serviceItem);
     }
 

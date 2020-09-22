@@ -25,24 +25,37 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
     }
 
     public void headerMenuItemsShouldBe(List<String> menuItems) {
-        headerMenu.getHeaderNavigationMenuItems().forEach(item -> item.is(visible));
+        headerMenu.getHeaderNavigationMenuItems().forEach(item -> item.shouldBe(visible));
         $$(headerMenu.getHeaderNavigationMenuItems()).shouldHave(textsInAnyOrder(menuItems));
     }
 
     public void navigationBarisDisplayed() {
-        navigationSideBar.getNavigationSidebar().isDisplayed();
+        navigationSideBar.getNavigationSidebar().shouldBe(visible);
     }
 
     public void footerIsDisplayed() {
-        footer.getFooter().isDisplayed();
+        footer.getFooter().shouldBe(visible);
     }
 
-    public void serviceItemsInHeaderMenuShouldBe(List<String> serviceItems) {
+    public void rightSectionIsDisplayed() {
+        rightSidebar.getRightSidebar().shouldBe(visible);
+    }
+
+    public void serviceMenuItemsInHeaderSHouldBe(List<String> items) {
+        serviceItemsMenuShouldBe(headerMenu.getServiceDropdownMenu(), items);
+    }
+
+    public void serviceMenuItemsInNavigationBarShouldBe(List<String> items) {
+        serviceItemsMenuShouldBe(navigationSideBar.getServiceMenuItems(), items);
+    }
+
+
+    private void serviceItemsMenuShouldBe(List<SelenideElement> actualItems, List<String> expectedItems) {
         SoftAssert softAssert = new SoftAssert();
         boolean cond;
-        for (SelenideElement item : headerMenu.getServiceDropdownMenu()) {
-            cond = serviceItems.contains(item.innerText().toUpperCase().trim());
-            item.is(visible);
+        for (SelenideElement item : actualItems) {
+            cond = expectedItems.contains(item.innerText().toUpperCase().trim());
+            item.shouldBe(visible);
             softAssert.assertTrue(cond);
         }
         softAssert.assertAll();
@@ -50,13 +63,13 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
 
     //    HOME PAGE STEPS
     public void benefitIconsShouldBeDisplayed() {
-        homePage.getBenefitIcons().forEach(SelenideElement::isDisplayed);
+        homePage.getBenefitIcons().forEach(icon -> icon.shouldBe(visible));
     }
 
     public void benefitTextsShouldBe(HashMap<Integer, String> texts) {
         int imageCount = 0;
         for (SelenideElement currentBenefitText : homePage.getBenefitTexts()) {
-            currentBenefitText.isDisplayed();
+            currentBenefitText.shouldBe(visible);
             currentBenefitText.shouldBe(Condition.exactText(texts.get(imageCount)));
             imageCount++;
         }
@@ -71,15 +84,15 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
     }
 
     public void iFrameShouldExist() {
-        homePage.getIFrame().exists();
+        homePage.getIFrame().should(exist);
     }
 
     public void epamLogoShouldBeDisplayed() {
-        homePage.getEpamLogo().isDisplayed();
+        homePage.getEpamLogo().should(exist);
     }
 
     public void jdiGithubLinkIsDisplayed() {
-        homePage.getJdiGithubLink().isDisplayed();
+        homePage.getJdiGithubLink().should(exist);
     }
 
     public void jdiGithubLinkTextShouldBe(String gitHubLinkText) {

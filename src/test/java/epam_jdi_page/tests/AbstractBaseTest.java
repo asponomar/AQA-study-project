@@ -14,32 +14,29 @@ public class AbstractBaseTest implements TestData {
     protected ActionSteps actionStep;
     protected AssertionSteps assertStep;
 
-/*    @BeforeSuite
-    public void suiteSetup() {
-
-//        FIXME Trying to create ChromeDriver gives error in Linux
-*//*        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized"); // open Browser in maximized mode
-        options.addArguments("disable-infobars"); // disabling infobars
-        options.addArguments("--disable-extensions"); // disabling extensions
-        options.addArguments("--disable-gpu"); // applicable to windows os only
-        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-        options.addArguments("--no-sandbox"); // Bypass OS security model*//*
-    }*/
-
     @BeforeTest
     public void setUp() {
+
         Configuration.browser = Browsers.FIREFOX;
         Configuration.timeout = 2000;
         Configuration.assertionMode = AssertionMode.STRICT;
         Configuration.startMaximized = true;
         Configuration.screenshots = false;
+        Configuration.headless = false;
+
+        //        FIXME Trying to create ChromeDriver causes error in Linux: DevToolsActivePort file doesn't exist
+/*
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox"); // Bypass OS security model
+        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+
+        Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+*/
+
     }
 
     @BeforeMethod
-    public void methodSetUp(){
+    public void methodSetUp() {
         open(HOME_PAGE_URL);
         this.actionStep = new ActionSteps();
         this.assertStep = new AssertionSteps();

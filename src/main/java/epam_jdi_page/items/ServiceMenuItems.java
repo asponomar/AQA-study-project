@@ -3,7 +3,7 @@ package epam_jdi_page.items;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum ServiceItems {
+public enum ServiceMenuItems {
     SUPPORT("SUPPORT"),
     DATES("DATES"),
     SEARCH("SEARCH"),
@@ -16,13 +16,13 @@ public enum ServiceItems {
 
     private final String itemName;
 
-    ServiceItems(String itemName) {
+    ServiceMenuItems(String itemName) {
         this.itemName = itemName;
     }
 
-    public static List<String> getServiceItems() {
+    public static List<String> getServiceMenuItems() {
         ArrayList<String> result = new ArrayList<>();
-        for (ServiceItems menuItem : values()) {
+        for (ServiceMenuItems menuItem : values()) {
             result.add(menuItem.itemName);
         }
         return result;

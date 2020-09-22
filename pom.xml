@@ -14,7 +14,7 @@
         <encoding.version>UTF-8</encoding.version>
 
         <!-- Libraries versions -->
-        <selenide.version>5.5.1</selenide.version>
+        <selenide.version>5.14.2</selenide.version>
         <webdriver.manager.version>3.7.1</webdriver.manager.version>
         <selenium.version>3.141.59</selenium.version>
         <commons-io.version>2.6</commons-io.version>

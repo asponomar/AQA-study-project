@@ -2,7 +2,7 @@ package epam_jdi_page.components;
 
 import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.items.HeaderMenuItems;
-import epam_jdi_page.items.ServiceItems;
+import epam_jdi_page.items.ServiceMenuItems;
 import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.List;
@@ -79,7 +79,7 @@ public class HeaderMenu {
         return serviceDropdownMenu;
     }
 
-    public void serviceItemClick(ServiceItems serviceItem) {
+    public void serviceItemClick(ServiceMenuItems serviceItem) {
         try {
             for (SelenideElement item : serviceDropdownMenu) {
                 if (item.getText().equals(serviceItem.getItemName())) {
