@@ -2,7 +2,7 @@ package epam_jdi_page.tests;
 
 import org.testng.annotations.Test;
 
-import static epam_jdi_page.items.BenefitTextItems.getBenefitTextItems;
+import static epam_jdi_page.items.HomePageBenefitTextItems.getBenefitTextItems;
 import static epam_jdi_page.items.HeaderMenuItems.getHeaderMenuItems;
 
 public class HomePageTests extends AbstractBaseTest implements TestData {
@@ -12,8 +12,8 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
 
         assertStep.pageTitleShouldBe(HOME_PAGE_TITLE);
 
-        actionStep.login(USER_LOGIN, USER_PASSWORD);
-        assertStep.userNameShouldBe(USER_NAME);
+        actionStep.login(user);
+        assertStep.userNameShouldBe(user.getUserName());
         assertStep.pageTitleShouldBe(HOME_PAGE_TITLE);
 
         assertStep.headerMenuItemsShouldBe(getHeaderMenuItems());
@@ -22,8 +22,8 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
 
         assertStep.benefitTextsShouldBe(getBenefitTextItems());
 
-        assertStep.mainTitleTextShouldBe(MAIN_TITLE_TEXT);
-        assertStep.jdiTextShouldBe(JDI_TEXT);
+        assertStep.mainTitleTextShouldBe(HOME_PAGE_MAIN_TITLE_TEXT);
+        assertStep.jdiTextShouldBe(HOME_PAGEJDI_TEXT);
 
         assertStep.iFrameShouldExist();
         actionStep.switchToIframe();
@@ -33,8 +33,8 @@ public class HomePageTests extends AbstractBaseTest implements TestData {
         assertStep.epamLogoShouldBeDisplayed();
 
         assertStep.jdiGithubLinkIsDisplayed();
-        assertStep.jdiGithubLinkTextShouldBe(JDI_GITHUB_LINK_NAME);
-        assertStep.jdiGitHubLinkSHouldBe(JDI_GITHUB_LINK_URL);
+        assertStep.jdiGithubLinkTextShouldBe(HOME_PAGE_JDI_GITHUB_LINK_NAME);
+        assertStep.jdiGitHubLinkSHouldBe(HOME_PAGE_JDI_GITHUB_LINK_URL);
 
         assertStep.navigationBarisDisplayed();
         assertStep.footerIsDisplayed();

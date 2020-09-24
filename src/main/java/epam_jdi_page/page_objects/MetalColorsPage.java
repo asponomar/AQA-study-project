@@ -1,4 +1,4 @@
-package epam_jdi_page;
+package epam_jdi_page.page_objects;
 
 import com.codeborne.selenide.SelenideElement;
 
@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.id;
 
-public class MetalColorsPage {
+public class MetalColorsPage extends AbstractBasePageWithRightsideBar {
 
     //SUMMARY
     private List<SelenideElement> summaryRadioButtons = $$(cssSelector("#summary-block .radio"));
@@ -41,8 +41,6 @@ public class MetalColorsPage {
     private SelenideElement currentVegetables = $(cssSelector("#salad-dropdown"));
 
     private SelenideElement submitButton = $(id("submit-button"));
-
-
 
 
     public List<SelenideElement> getSummaryRadioButtons() {

@@ -7,7 +7,8 @@ import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static org.openqa.selenium.By.*;
 
 public class HeaderMenu {
@@ -33,16 +34,11 @@ public class HeaderMenu {
     private final List<SelenideElement> serviceDropdownMenu = $$(".dropdown-menu>li>a");
 
 
-    public HeaderMenu() {
-        page(this);
-    }
-
-
     public void userIconClick() {
         userIcon.click();
     }
 
-    public void setTextUserNameField(String userName) {
+    public void setTextUserLoginField(String userName) {
         userNameField.sendKeys(userName);
     }
 
@@ -79,7 +75,7 @@ public class HeaderMenu {
         return serviceDropdownMenu;
     }
 
-    public void serviceItemClick(ServiceMenuItems serviceItem) {
+    public void serviceItemHeaderMenuClick(ServiceMenuItems serviceItem) {
         try {
             for (SelenideElement item : serviceDropdownMenu) {
                 if (item.getText().equals(serviceItem.getItemName())) {
@@ -88,7 +84,7 @@ public class HeaderMenu {
                 }
             }
         } catch (StaleElementReferenceException e) {
-            serviceItemClick(serviceItem);
+            serviceItemHeaderMenuClick(serviceItem);
         }
     }
 

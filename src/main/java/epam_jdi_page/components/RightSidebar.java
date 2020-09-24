@@ -4,7 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.xpath;
 
@@ -15,11 +16,6 @@ public class RightSidebar {
     private List<SelenideElement> logList = $$(cssSelector(".panel-body-list.logs li"));
 
     private List<SelenideElement> resultsList = $$(cssSelector(".panel-body-list.results li"));
-
-
-    public RightSidebar() {
-        page(this);
-    }
 
 
     public SelenideElement getRightSidebar() {

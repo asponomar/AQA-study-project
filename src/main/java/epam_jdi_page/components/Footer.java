@@ -4,7 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static org.openqa.selenium.By.*;
 
 public class Footer {
@@ -15,9 +16,6 @@ public class Footer {
 
     private SelenideElement footerText = $(xpath("//div[contains(text(),'Powered by EPAM System')]"));
 
-    public Footer() {
-        page(this);
-    }
 
     public SelenideElement getFooter() {
         return footer;

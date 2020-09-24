@@ -1,4 +1,4 @@
-package epam_jdi_page;
+package epam_jdi_page.page_objects;
 
 import com.codeborne.selenide.SelenideElement;
 

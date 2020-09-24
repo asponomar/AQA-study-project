@@ -10,8 +10,8 @@ public class MetalColorsTests extends AbstractBaseTest {
 
         assertStep.pageTitleShouldBe(TestData.HOME_PAGE_TITLE);
 
-        actionStep.login(USER_LOGIN, USER_PASSWORD);
-        assertStep.userNameShouldBe(USER_NAME);
+        actionStep.login(user);
+        assertStep.userNameShouldBe(user.getUserName());
 
         actionStep.headerNavigationMenuClick(HeaderMenuItems.METALS_AND_COLORS);
         assertStep.pageTitleShouldBe(TestData.METAL_COLORS_PAGE_TITLE);

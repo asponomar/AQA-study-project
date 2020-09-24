@@ -14,14 +14,14 @@ public class DifferentElementsPageTests extends AbstractBaseTest implements Test
 
         assertStep.pageTitleShouldBe(HOME_PAGE_TITLE);
 
-        actionStep.login(USER_LOGIN, USER_PASSWORD);
-        assertStep.userNameShouldBe(USER_NAME);
+        actionStep.login(user);
+        assertStep.userNameShouldBe(user.getUserName());
 
         assertStep.headerMenuItemsShouldBe(getHeaderMenuItems());
         assertStep.serviceMenuItemsInHeaderSHouldBe(getServiceMenuItems());
 
         actionStep.headerNavigationMenuClick(HeaderMenuItems.SERVICE);
-        actionStep.serviceMenuClick(DIFFERENT_ELEMENTS);
+        actionStep.serviceInHeaderMenuClick(DIFFERENT_ELEMENTS);
         assertStep.pageTitleShouldBe(DIFFERENT_ELEMENTS_PAGE_TITLE);
 
         assertStep.headerMenuItemsShouldBe(getHeaderMenuItems());

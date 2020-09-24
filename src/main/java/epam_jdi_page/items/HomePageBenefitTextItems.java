@@ -2,7 +2,7 @@ package epam_jdi_page.items;
 
 import java.util.HashMap;
 
-public enum BenefitTextItems {
+public enum HomePageBenefitTextItems {
     FIRST_IMAGE_TEXT("To include good practices\n" +
             "and ideas from successful\n" +
             "EPAM project"),
@@ -16,14 +16,14 @@ public enum BenefitTextItems {
 
     private final String text;
 
-    BenefitTextItems(String text) {
+    HomePageBenefitTextItems(String text) {
         this.text = text;
     }
 
     public static HashMap<Integer, String> getBenefitTextItems() {
         HashMap<Integer, String> result = new HashMap<>();
         int imageCount = 0;
-        for (BenefitTextItems item : values()) {
+        for (HomePageBenefitTextItems item : values()) {
             result.put(imageCount, item.text);
             imageCount++;
         }
