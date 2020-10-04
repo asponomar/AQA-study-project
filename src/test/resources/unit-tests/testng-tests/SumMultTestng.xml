@@ -2,13 +2,13 @@
 <suite name="Sum and Multiply Test Suite">
     <test name="Sum Test">
         <classes>
-            <class name="testng.TestSum"></class>
+            <class name="calculator.testng.CalculatorTestSum"></class>
         </classes>
     </test>
 
     <test name="Multiply Test">
         <classes>
-            <class name="testng.TestMultiply"></class>
+            <class name="calculator.testng.CalculatorTestMultiply"></class>
         </classes>
     </test>
 </suite>

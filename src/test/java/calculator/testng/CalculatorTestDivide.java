@@ -1,10 +1,10 @@
-package testng;
+package calculator.testng;
 
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class TestDivide extends AbstractBaseTest {
+public class CalculatorTestDivide extends AbstractBaseCalculatorTest {
 
     @Test(dataProviderClass = TestDataProvider.class, dataProvider = "divideDataProvider")
     public void testDivide(double a, double b, double expected) {

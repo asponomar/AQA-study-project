@@ -14,6 +14,10 @@
         <encoding.version>UTF-8</encoding.version>
 
         <!-- Libraries versions -->
+        <selenide.version>5.14.2</selenide.version>
+        <webdriver.manager.version>3.7.1</webdriver.manager.version>
+        <selenium.version>3.141.59</selenium.version>
+        <commons-io.version>2.6</commons-io.version>
         <testng.version>7.1.0</testng.version>
         <junit.platform.version>1.6.2</junit.platform.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
@@ -27,10 +31,10 @@
         <profile>
             <id>CommonTestSuite</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/work1-unit-tests/testng-tests/CommonTestng.xml</suite.file>
+                <suite.file>src/test/resources/unit-tests/testng-tests/CommonTestng.xml</suite.file>
             </properties>
         </profile>
 
@@ -40,7 +44,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/work1-unit-tests/testng-tests/SumMultTestng.xml</suite.file>
+                <suite.file>src/test/resources/unit-tests/testng-tests/SumMultTestng.xml</suite.file>
             </properties>
         </profile>
 
@@ -50,12 +54,47 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>src/test/resources/work1-unit-tests/testng-tests/SubDivTestng.xml</suite.file>
+                <suite.file>src/test/resources/unit-tests/testng-tests/SubDivTestng.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>SelenideTestSuite</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/selenide-tests/SelenideTests.xml</suite.file>
             </properties>
         </profile>
     </profiles>
-    
+
     <dependencies>
+
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdriver.manager.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
