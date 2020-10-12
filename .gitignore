@@ -1,5 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea
 /target
+/allure-results
+/allure-reports
+/.allure
 *.iml
 /src/test/resources/drivers/

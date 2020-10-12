@@ -1,13 +1,16 @@
 package epam_jdi_page.tests;
 
+import io.qameta.allure.Severity;
 import org.testng.annotations.Test;
 
-import static epam_jdi_page.items.HomePageBenefitTextItems.getBenefitTextItems;
 import static epam_jdi_page.items.HeaderMenuItems.getHeaderMenuItems;
+import static epam_jdi_page.items.HomePageBenefitTextItems.getBenefitTextItems;
+import static io.qameta.allure.SeverityLevel.CRITICAL;
 
 public class HomePageTests extends AbstractBaseTest implements TestData {
 
-    @Test
+    @Test(testName = "Home page test")
+    @Severity(CRITICAL)
     public void homePageTest() {
 
         assertStep.pageTitleShouldBe(HOME_PAGE_TITLE);
