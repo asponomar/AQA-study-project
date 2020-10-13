@@ -1,3 +1,0 @@
-1600708475560	geckodriver	INFO	Listening on 127.0.0.1:1253
-1600708475573	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofiler43RmN"
-Running Firefox as root in a regular user's session is not supported.  ($HOME is /home/alexander which is owned by alexander.)

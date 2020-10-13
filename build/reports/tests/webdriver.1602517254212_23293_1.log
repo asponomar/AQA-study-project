@@ -1,8 +1,0 @@
-1602517254334	geckodriver	INFO	Listening on 127.0.0.1:11729
-1602517254586	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile9RDKd9"
-console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
-JavaScript error: resource://gre/modules/TelemetryUtils.jsm, line 159: TypeError: date is undefined
-1602517257217	Marionette	INFO	Listening on port 42431
-1602517257295	Marionette	WARN	TLS certificate errors will be ignored for this session
-JavaScript error: resource://gre/modules/URIFixup.jsm, line 271: NS_ERROR_FAILURE: Should pass a non-null uri
-1602517273470	Marionette	INFO	Stopped listening on port 42431
