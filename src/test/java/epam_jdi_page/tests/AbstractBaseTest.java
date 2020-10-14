@@ -3,6 +3,7 @@ package epam_jdi_page.tests;
 import com.codeborne.selenide.AssertionMode;
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
+import epam_jdi_page.driver.DriverClass;
 import epam_jdi_page.listeners.AttachmentListener;
 import epam_jdi_page.steps.ActionSteps;
 import epam_jdi_page.steps.AssertionSteps;
@@ -13,6 +14,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
+import java.net.MalformedURLException;
+
 import static com.codeborne.selenide.Selenide.open;
 
 @Listeners({AllureTestNg.class, AttachmentListener.class})
@@ -22,7 +25,10 @@ public class AbstractBaseTest implements TestData {
     protected User user;
 
     @BeforeTest
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
+        DriverClass.initRemoteDriver();
+
+//        driver.manage().window().setSize(new Dimension(1920, 1080));
 
         Configuration.browser = Browsers.FIREFOX;
         Configuration.timeout = 2000;
