@@ -16,7 +16,7 @@ public class DriverClass {
         Configuration.browser = "chrome";
         DesiredCapabilities browser = new DesiredCapabilities();
         browser.setBrowserName("chrome");
-        browser.setVersion("66");
+        browser.setVersion("78.0");
         browser.setCapability("enableVNC", true);
         WebDriverRunner.setWebDriver(new RemoteWebDriver(URI.create("http://172.17.0.3:4444/wd/hub").toURL(), browser));
         setWebDriver(WebDriverRunner.getWebDriver());
