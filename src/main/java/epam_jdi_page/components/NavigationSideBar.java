@@ -21,7 +21,6 @@ public class NavigationSideBar {
     private final List<SelenideElement> serviceMenuItems =
             $$(xpath("//div[@class='wrapper']//li[3]//ul[1]//*[contains(@ui, 'label')]"));
 
-//    private final List<SelenideElement> elementPacksMenuItems = $$(xpath(""));
 
     public SelenideElement getNavigationSidebar() {
         return navigationSidebar;

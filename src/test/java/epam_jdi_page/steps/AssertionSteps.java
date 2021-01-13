@@ -1,6 +1,9 @@
 package epam_jdi_page.steps;
 
 import com.codeborne.selenide.SelenideElement;
+import epam_jdi_page.items.different_elements_page.Checkboxes;
+import epam_jdi_page.items.different_elements_page.DropdownColors;
+import epam_jdi_page.items.different_elements_page.Radios;
 import io.qameta.allure.Step;
 import org.testng.asserts.SoftAssert;
 
@@ -13,6 +16,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class AssertionSteps extends AbstractBaseSteps {
 
@@ -127,7 +131,7 @@ public class AssertionSteps extends AbstractBaseSteps {
 
     @Step("4 radios should be")
     public void fourRadiosShouldBe() {
-        assertEquals(differentElementsPage.getMetalsRadioButtons().size(), 4);
+        assertEquals(differentElementsPage.getMetalsRadios().size(), 4);
     }
 
     @Step("1 dropdown should be")
@@ -140,6 +144,75 @@ public class AssertionSteps extends AbstractBaseSteps {
         differentElementsPage.getDefaultButton().should(exist);
         differentElementsPage.getButton().should(exist);
     }
+
+    @Step("Checkbox {0} is selected")
+    public void checkboxShouldBeSelected(Checkboxes checkboxName) {
+        for (int i = 0; i < differentElementsPage.getElementsCheckboxes().size(); i++) {
+            if (checkboxName.getCheckboxName()
+                    .equals(differentElementsPage.getElementsCheckboxes().get(i).getText())) {
+                assertTrue(differentElementsPage.getElementsCheckboxesButtons().get(i).isSelected());
+            }
+        }
+    }
+
+    @Step("Each checkbox there is an individual log row and value is corresponded to the status of checkbox")
+    public void checkboxesLogRowCheck() {
+        for (int i = 0; i < differentElementsPage.getElementsCheckboxes().size(); i++) {
+            differentElementsPage.getElementsCheckboxesButtons().get(i).click();
+            if (differentElementsPage.getElementsCheckboxesButtons().get(i).isSelected()) {
+                assertTrue(rightSidebar.getLogList().get(0).getText()
+                        .contains(Checkboxes.getCheckboxesNames().get(i)
+                                + ": condition changed to true"));
+            } else {
+                assertTrue(rightSidebar.getLogList().get(0).getText()
+                        .contains(Checkboxes.getCheckboxesNames().get(i)
+                                + ": condition changed to false"));
+            }
+        }
+    }
+
+    @Step("Radio {0} is selected")
+    public void radioShouldBeSelected(Radios radiobutton) {
+        for (int i = 0; i < differentElementsPage.getMetalsRadioButtons().size(); i++) {
+            if (radiobutton.getRadioName()
+                    .equals(differentElementsPage.getMetalsRadios().get(i).getText())) {
+                assertTrue(differentElementsPage.getMetalsRadioButtons().get(i).isSelected());
+                assertTrue(rightSidebar.getLogList().get(0).getText()
+                        .contains("metal: value changed to " + Radios.getRadioNames().get(i)));
+            }
+        }
+    }
+
+    @Step("Each radio there is an individual log row and value is corresponded to its status")
+    public void radiosLogRowCheck() {
+        for (int i = 0; i < differentElementsPage.getMetalsRadioButtons().size(); i++) {
+            if (differentElementsPage.getMetalsRadioButtons().get(i).isSelected()) {
+                assertTrue(rightSidebar.getLogList().get(0).getText()
+                        .contains(Radios.getRadioNames().get(i)));
+            }
+        }
+    }
+
+    @Step("Radio {0} is selected")
+    public void dropdownColorShouldBeSelected(DropdownColors dropdownColor) {
+        for (int i = 0; i < differentElementsPage.getColorDropdownMenuOptions().size(); i++) {
+            if (dropdownColor.getColorName()
+                    .equals(differentElementsPage.getColorDropdownMenuOptions().get(i).getText())) {
+                assertTrue(differentElementsPage.getColorDropdownMenuOptions().get(i).isSelected());
+            }
+        }
+    }
+
+    @Step("Log row is displayed, dropdown name and selected value is corresponding to selected")
+    public void colorsLogRowCheck() {
+        for (int i = 0; i < differentElementsPage.getColorDropdownMenuOptions().size(); i++) {
+            if (differentElementsPage.getColorDropdownMenuOptions().get(i).isSelected()) {
+                assertTrue(rightSidebar.getLogList().get(0).getText()
+                        .contains("Colors: value changed to " + DropdownColors.getColorNames().get(i)));
+            }
+        }
+    }
+
 
     //    TABLE PAGES STEPS
     @Step("Entrities quantity value should be '{0}'")

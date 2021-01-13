@@ -4,7 +4,7 @@ import io.qameta.allure.Severity;
 import org.testng.annotations.Test;
 
 import static epam_jdi_page.items.HeaderMenuItems.getHeaderMenuItems;
-import static epam_jdi_page.items.HomePageBenefitTextItems.getBenefitTextItems;
+import static epam_jdi_page.items.home_page.BenefitTextItems.getBenefitTextItems;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 
 public class HomePageTests extends AbstractBaseTest {

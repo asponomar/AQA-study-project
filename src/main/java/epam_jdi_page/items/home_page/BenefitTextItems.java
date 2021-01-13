@@ -1,8 +1,8 @@
-package epam_jdi_page.items;
+package epam_jdi_page.items.home_page;
 
 import java.util.HashMap;
 
-public enum HomePageBenefitTextItems {
+public enum BenefitTextItems {
     FIRST_IMAGE_TEXT("To include good practices\n" +
             "and ideas from successful\n" +
             "EPAM project"),
@@ -16,14 +16,14 @@ public enum HomePageBenefitTextItems {
 
     private final String text;
 
-    HomePageBenefitTextItems(String text) {
+    BenefitTextItems(String text) {
         this.text = text;
     }
 
     public static HashMap<Integer, String> getBenefitTextItems() {
         HashMap<Integer, String> result = new HashMap<>();
         int imageCount = 0;
-        for (HomePageBenefitTextItems item : values()) {
+        for (BenefitTextItems item : values()) {
             result.put(imageCount, item.text);
             imageCount++;
         }

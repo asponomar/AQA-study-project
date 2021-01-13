@@ -12,35 +12,35 @@ import static org.openqa.selenium.By.id;
 public class MetalColorsPage extends AbstractBasePageWithRightsideBar {
 
     //SUMMARY
-    private List<SelenideElement> summaryRadioButtons = $$(cssSelector("#summary-block .radio"));
+    private final List<SelenideElement> summaryRadioButtons = $$(cssSelector("#summary-block .radio"));
 
-    private List<SelenideElement> oddsRadioButtons = $$(cssSelector("#odds-selector .radio"));
+    private final List<SelenideElement> oddsRadioButtons = $$(cssSelector("#odds-selector .radio"));
 
-    private List<SelenideElement> evenRadioButtons = $$(cssSelector("#even-selector .radio"));
+    private final List<SelenideElement> evenRadioButtons = $$(cssSelector("#even-selector .radio"));
 
-    private SelenideElement calculateButton = $(id("calculate-button"));
+    private final SelenideElement calculateButton = $(id("calculate-button"));
 
     //ELEMENTS
-    private List<SelenideElement> elementsCheckboxes = $$(cssSelector("#elements-checklist .checkbox"));
+    private final List<SelenideElement> elementsCheckboxes = $$(cssSelector("#elements-checklist .checkbox"));
 
 
-    private List<SelenideElement> colorsMenuItems = $$(cssSelector("#colors li"));
+    private final List<SelenideElement> colorsMenuItems = $$(cssSelector("#colors li"));
 
-    private SelenideElement currentColor = $(cssSelector("#colors .filter-option"));
+    private final SelenideElement currentColor = $(cssSelector("#colors .filter-option"));
 
     //COLORS
-    private List<SelenideElement> metalsMenuItems = $$(cssSelector("#metals li"));
+    private final List<SelenideElement> metalsMenuItems = $$(cssSelector("#metals li"));
 
-    private SelenideElement metalsMenuButton = $(cssSelector("#metals .caret"));
+    private final SelenideElement metalsMenuButton = $(cssSelector("#metals .caret"));
 
-    private SelenideElement currentMetal = $(cssSelector("#metals"));
+    private final SelenideElement currentMetal = $(cssSelector("#metals"));
 
     //METALS
-    private List<SelenideElement> vegetablesCheckboxesItems = $$(cssSelector("#salad-dropdown li"));
+    private final List<SelenideElement> vegetablesCheckboxesItems = $$(cssSelector("#salad-dropdown li"));
 
-    private SelenideElement currentVegetables = $(cssSelector("#salad-dropdown"));
+    private final SelenideElement currentVegetables = $(cssSelector("#salad-dropdown"));
 
-    private SelenideElement submitButton = $(id("submit-button"));
+    private final SelenideElement submitButton = $(id("submit-button"));
 
 
     public List<SelenideElement> getSummaryRadioButtons() {

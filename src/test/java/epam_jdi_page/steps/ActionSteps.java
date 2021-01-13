@@ -5,6 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.items.HeaderMenuItems;
 import epam_jdi_page.items.NavigationSidebarMenuItems;
 import epam_jdi_page.items.ServiceMenuItems;
+import epam_jdi_page.items.different_elements_page.Checkboxes;
+import epam_jdi_page.items.different_elements_page.DropdownColors;
+import epam_jdi_page.items.different_elements_page.Radios;
 import epam_jdi_page.utils.User;
 import io.qameta.allure.Step;
 
@@ -69,6 +72,35 @@ public class ActionSteps extends AbstractBaseSteps {
     @Step("I switch to parent frame")
     public void switchToParentFrame() {
         switchTo().parentFrame();
+    }
+
+
+    //    DIFFERENT ELEMENTS PAGE STEPS
+    @Step("I select {0} checkbox")
+    public void selectCheckbox(Checkboxes checkboxName) {
+        for (SelenideElement value : differentElementsPage.getElementsCheckboxes()) {
+            if (value.getText().equals(checkboxName.getCheckboxName())) {
+                value.click();
+            }
+        }
+    }
+
+    @Step("I select {0} radiobutton")
+    public void selectRadio(Radios radiobutton) {
+        for (SelenideElement radio : differentElementsPage.getMetalsRadios()) {
+            if (radio.getText().equals(radiobutton.getRadioName())) {
+                radio.click();
+            }
+        }
+    }
+
+    @Step("I select {0} dropdown color")
+    public void selectDropdownColor(DropdownColors dropdownColor){
+        for(SelenideElement color : differentElementsPage.getColorDropdownMenuOptions()){
+            if(color.getText().equals(dropdownColor.getColorName())){
+                color.click();
+            }
+        }
     }
 
 

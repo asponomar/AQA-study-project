@@ -12,11 +12,15 @@ public class DifferentElementsPage extends AbstractBasePageWithRightsideBar {
 
     private final List<SelenideElement> elementsCheckboxes = $$(".label-checkbox");
 
-    private final List<SelenideElement> metalsRadioButtons = $$(".label-radio");
+    private final List<SelenideElement> elementsCheckboxesButtons = $$(".label-checkbox>input");
+
+    private final List<SelenideElement> metalsRadios = $$(".label-radio");
+
+    private final List<SelenideElement> metalsRadioButtons = $$(".label-radio>input");
 
     private final SelenideElement colorDropdownMenu = $(".colors");
 
-    private final List<SelenideElement> colorOptions = $$(".colors>.uui-form-element>option");
+    private final List<SelenideElement> colorDropdownMenuOptions = $$(".colors>.uui-form-element>option");
 
     private final SelenideElement defaultButton = $(name("Default Button"));
 
@@ -27,6 +31,14 @@ public class DifferentElementsPage extends AbstractBasePageWithRightsideBar {
         return elementsCheckboxes;
     }
 
+    public List<SelenideElement> getElementsCheckboxesButtons() {
+        return elementsCheckboxesButtons;
+    }
+
+    public List<SelenideElement> getMetalsRadios() {
+        return metalsRadios;
+    }
+
     public List<SelenideElement> getMetalsRadioButtons() {
         return metalsRadioButtons;
     }
@@ -35,8 +47,8 @@ public class DifferentElementsPage extends AbstractBasePageWithRightsideBar {
         return colorDropdownMenu;
     }
 
-    public List<SelenideElement> getColorOptions() {
-        return colorOptions;
+    public List<SelenideElement> getColorDropdownMenuOptions() {
+        return colorDropdownMenuOptions;
     }
 
     public SelenideElement getDefaultButton() {

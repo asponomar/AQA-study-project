@@ -11,11 +11,11 @@ import static org.openqa.selenium.By.xpath;
 
 public class RightSidebar {
 
-    private SelenideElement rightSidebar = $(xpath("//div[@name='log-sidebar']"));
+    private final SelenideElement rightSidebar = $(xpath("//div[@name='log-sidebar']"));
 
-    private List<SelenideElement> logList = $$(cssSelector(".panel-body-list.logs li"));
+    private final List<SelenideElement> logList = $$(cssSelector(".panel-body-list.logs li"));
 
-    private List<SelenideElement> resultsList = $$(cssSelector(".panel-body-list.results li"));
+    private final List<SelenideElement> resultsList = $$(cssSelector(".panel-body-list.results li"));
 
 
     public SelenideElement getRightSidebar() {
