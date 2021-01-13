@@ -7,7 +7,7 @@ import static epam_jdi_page.items.HeaderMenuItems.getHeaderMenuItems;
 import static epam_jdi_page.items.HomePageBenefitTextItems.getBenefitTextItems;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 
-public class HomePageTests extends AbstractBaseTest implements TestData {
+public class HomePageTests extends AbstractBaseTest {
 
     @Test(testName = "Home page test")
     @Severity(CRITICAL)

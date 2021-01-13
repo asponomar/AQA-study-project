@@ -13,4 +13,16 @@
         </classes>
     </test>
 
+    <test name="Metal and Color Page Test">
+        <classes>
+            <class name="epam_jdi_page.tests.MetalColorsTests"/>
+        </classes>
+    </test>
+
+    <test name="Table with Pages Test">
+        <classes>
+            <class name="epam_jdi_page.tests.TablePagesTests"/>
+        </classes>
+    </test>
+
 </suite>

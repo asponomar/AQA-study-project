@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import static epam_jdi_page.items.ServiceMenuItems.TABLE_WITH_PAGES;
 import static epam_jdi_page.items.ServiceMenuItems.getServiceMenuItems;
 
-public class TablePagesTests extends AbstractBaseTest implements TestData {
+public class TablePagesTests extends AbstractBaseTest {
 
     @Test
     public void tablePagesTest() {

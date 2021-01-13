@@ -5,14 +5,13 @@ import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.items.HeaderMenuItems;
 import epam_jdi_page.items.NavigationSidebarMenuItems;
 import epam_jdi_page.items.ServiceMenuItems;
-import epam_jdi_page.tests.TestData;
 import epam_jdi_page.utils.User;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class ActionSteps extends AbstractBaseSteps implements TestData {
+public class ActionSteps extends AbstractBaseSteps {
 
     // COMMON STEPS
     @Step("I open '{0}' url")
@@ -20,7 +19,7 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
         open(pageURL);
     }
 
-    @Step("I login as '{0}'")
+    @Step("I login as user from props file")
     public void login(User user) {
         headerMenu.userIconClick();
         headerMenu.setTextUserLoginField(user.getUserLogin());
@@ -44,8 +43,8 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
     }
 
     @Step("I click '{0}' item in header navigation service submenu")
-    public void serviceInHeaderMenuClick(ServiceMenuItems serviceItem) {
-        headerMenu.serviceItemHeaderMenuClick(serviceItem);
+    public void serviceInHeaderMenuClick(ServiceMenuItems serviceMenuItem) {
+        headerMenu.serviceItemHeaderMenuClick(serviceMenuItem);
     }
 
 

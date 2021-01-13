@@ -1,7 +1,6 @@
 package epam_jdi_page.steps;
 
 import com.codeborne.selenide.SelenideElement;
-import epam_jdi_page.tests.TestData;
 import io.qameta.allure.Step;
 import org.testng.asserts.SoftAssert;
 
@@ -15,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static org.testng.Assert.assertEquals;
 
-public class AssertionSteps extends AbstractBaseSteps implements TestData {
+public class AssertionSteps extends AbstractBaseSteps {
 
     //    COMMON STEPS
     @Step("Page title should be '{0}'")
@@ -74,7 +73,7 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
         homePage.getBenefitIcons().forEach(icon -> icon.shouldBe(visible));
     }
 
-    @Step("Benefit text should be '{1}'")
+    @Step("Benefit text should be '{0}'")
     public void benefitTextsShouldBe(HashMap<Integer, String> texts) {
         int imageCount = 0;
         for (SelenideElement currentBenefitText : homePage.getBenefitTexts()) {
@@ -119,6 +118,28 @@ public class AssertionSteps extends AbstractBaseSteps implements TestData {
         homePage.getJdiGithubLink().shouldBe(attribute("href", link));
     }
 
+
+    //    DIFFERENT ELEMENTS PAGE STEPS
+    @Step("4 checkboxes should be")
+    public void fourCheckboxesShouldBe() {
+        assertEquals(differentElementsPage.getElementsCheckboxes().size(), 4);
+    }
+
+    @Step("4 radios should be")
+    public void fourRadiosShouldBe() {
+        assertEquals(differentElementsPage.getMetalsRadioButtons().size(), 4);
+    }
+
+    @Step("1 dropdown should be")
+    public void dropdownShouldBe() {
+        differentElementsPage.getColorDropdownMenu().should(exist);
+    }
+
+    @Step("2 buttons should be")
+    public void twoButtonsShouldBe() {
+        differentElementsPage.getDefaultButton().should(exist);
+        differentElementsPage.getButton().should(exist);
+    }
 
     //    TABLE PAGES STEPS
     @Step("Entrities quantity value should be '{0}'")

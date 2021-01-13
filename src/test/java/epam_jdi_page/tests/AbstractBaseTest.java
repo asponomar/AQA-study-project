@@ -3,7 +3,6 @@ package epam_jdi_page.tests;
 import com.codeborne.selenide.AssertionMode;
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
-import epam_jdi_page.driver.DriverClass;
 import epam_jdi_page.listeners.AttachmentListener;
 import epam_jdi_page.steps.ActionSteps;
 import epam_jdi_page.steps.AssertionSteps;
@@ -26,9 +25,7 @@ public class AbstractBaseTest implements TestData {
 
     @BeforeTest
     public void setUp() throws MalformedURLException {
-        DriverClass.initRemoteDriver();
-
-//        driver.manage().window().setSize(new Dimension(1920, 1080));
+//        DriverClass.initRemoteDriver();
 
         Configuration.browser = Browsers.FIREFOX;
         Configuration.timeout = 2000;
@@ -36,16 +33,6 @@ public class AbstractBaseTest implements TestData {
         Configuration.startMaximized = true;
         Configuration.screenshots = false;
         Configuration.headless = false;
-
-        //        FIXME Trying to create ChromeDriver causes error in Linux: DevToolsActivePort file doesn't exist
-/*
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox"); // Bypass OS security model
-        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-
-        Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
-*/
-
     }
 
     @BeforeMethod
@@ -57,5 +44,8 @@ public class AbstractBaseTest implements TestData {
         this.user = User.createUserFromPropertyFile(PROPERTY_FILE);
     }
 
-
+/*    @AfterMethod
+    public void tearDown() {
+        WebDriverRunner.closeWebDriver();
+    }*/
 }

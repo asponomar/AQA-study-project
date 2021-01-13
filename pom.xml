@@ -124,17 +124,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
-            <!-- <plugin>
-                 <groupId>io.qameta.allure</groupId>
-                 <artifactId>allure-maven</artifactId>
-                 <version>${allure.maven.plugin.version}</version>
-                 <configuration>
-                     <reportVersion>${allure.version}</reportVersion>
-                     <resultsDirectory>${project.basedir}/target/allure-results</resultsDirectory>&ndash;&gt;
-                     <reportDirectory>${project.basedir}/target/allure-reports</reportDirectory>
-                 </configuration>&ndash;&gt;
-             </plugin>-->
         </plugins>
     </build>
 
