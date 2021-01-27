@@ -12,9 +12,9 @@ public class Footer {
 
     private final SelenideElement footer = $(tagName("footer"));
 
-    private List<SelenideElement> footerMenu = $$(cssSelector(".footer-menu li"));
+    private final List<SelenideElement> footerMenu = $$(cssSelector(".footer-menu li"));
 
-    private SelenideElement footerText = $(xpath("//div[contains(text(),'Powered by EPAM System')]"));
+    private final SelenideElement footerText = $(xpath("//div[contains(text(),'Powered by EPAM System')]"));
 
 
     public SelenideElement getFooter() {

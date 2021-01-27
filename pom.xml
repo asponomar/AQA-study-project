@@ -14,6 +14,8 @@
         <encoding.version>UTF-8</encoding.version>
 
         <!-- Libraries versions -->
+        <aspectj.version>1.9.6</aspectj.version>
+        <allure.version>2.13.6</allure.version>
         <selenide.version>5.14.2</selenide.version>
         <webdriver.manager.version>3.7.1</webdriver.manager.version>
         <selenium.version>3.141.59</selenium.version>
@@ -23,41 +25,12 @@
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
 
         <!-- Plugins versions -->
-        <maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
+        <allure.maven.plugin.version>2.10.0</allure.maven.plugin.version>
         <maven.surefire.version>2.22.2</maven.surefire.version>
+        <maven.compiler.plugin.version>3.6.0</maven.compiler.plugin.version>
     </properties>
 
     <profiles>
-        <profile>
-            <id>CommonTestSuite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>src/test/resources/unit-tests/testng-tests/CommonTestng.xml</suite.file>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>SumMultiplyTestSuite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>src/test/resources/unit-tests/testng-tests/SumMultTestng.xml</suite.file>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>SubstractDivideTestSuite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <suite.file>src/test/resources/unit-tests/testng-tests/SubDivTestng.xml</suite.file>
-            </properties>
-        </profile>
-
         <profile>
             <id>SelenideTestSuite</id>
             <activation>
@@ -70,6 +43,17 @@
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.codeborne</groupId>
@@ -102,35 +86,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-commons</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sample</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -151,14 +106,36 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
-                    <reuseForks>false</reuseForks>
-                    <forkCount>0</forkCount>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.maven.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

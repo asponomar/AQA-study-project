@@ -5,19 +5,24 @@ import com.codeborne.selenide.SelenideElement;
 import epam_jdi_page.items.HeaderMenuItems;
 import epam_jdi_page.items.NavigationSidebarMenuItems;
 import epam_jdi_page.items.ServiceMenuItems;
-import epam_jdi_page.tests.TestData;
+import epam_jdi_page.items.different_elements_page.Checkboxes;
+import epam_jdi_page.items.different_elements_page.DropdownColors;
+import epam_jdi_page.items.different_elements_page.Radios;
 import epam_jdi_page.utils.User;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class ActionSteps extends AbstractBaseSteps implements TestData {
+public class ActionSteps extends AbstractBaseSteps {
 
     // COMMON STEPS
+    @Step("I open '{0}' url")
     public void openPageUrl(String pageURL) {
         open(pageURL);
     }
 
+    @Step("I login as user from props file")
     public void login(User user) {
         headerMenu.userIconClick();
         headerMenu.setTextUserLoginField(user.getUserLogin());
@@ -25,6 +30,7 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
         headerMenu.loginButtonClick();
     }
 
+    @Step("I logout")
     public void logout() {
         if (!headerMenu.getLogoutButton().is(Condition.visible)) {
             headerMenu.getUserName().click();
@@ -34,36 +40,72 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
 
 
     //HEADER STEPS
+    @Step("I click '{0}' item in header navigation menu")
     public void headerNavigationMenuClick(HeaderMenuItems menuItem) {
         headerMenu.headerNavigationMenuItemClick(menuItem);
     }
 
-    public void serviceInHeaderMenuClick(ServiceMenuItems serviceItem) {
-        headerMenu.serviceItemHeaderMenuClick(serviceItem);
+    @Step("I click '{0}' item in header navigation service submenu")
+    public void serviceInHeaderMenuClick(ServiceMenuItems serviceMenuItem) {
+        headerMenu.serviceItemHeaderMenuClick(serviceMenuItem);
     }
 
 
     //    NAVIGATION SIDEBAR STEPS
+    @Step("I click '{0}' item in sidebar menu")
     public void sidevarNavigationMenuClick(NavigationSidebarMenuItems menuItem) {
         navigationSideBar.navigationSidebarMenuClick(menuItem);
     }
 
+    @Step("I click '{0}' item in sidebar service submenu")
     public void serviceInSidebarMenuClick(ServiceMenuItems serviceItem) {
         navigationSideBar.serviceItemSidebarMenuClick(serviceItem);
     }
 
 
     // HOMEPAGE STEPS
+    @Step("I switch to frame")
     public void switchToIframe() {
         switchTo().frame(homePage.getIFrame());
     }
 
+    @Step("I switch to parent frame")
     public void switchToParentFrame() {
         switchTo().parentFrame();
     }
 
 
+    //    DIFFERENT ELEMENTS PAGE STEPS
+    @Step("I select {0} checkbox")
+    public void selectCheckbox(Checkboxes checkboxName) {
+        for (SelenideElement value : differentElementsPage.getElementsCheckboxes()) {
+            if (value.getText().equals(checkboxName.getCheckboxName())) {
+                value.click();
+            }
+        }
+    }
+
+    @Step("I select {0} radiobutton")
+    public void selectRadio(Radios radiobutton) {
+        for (SelenideElement radio : differentElementsPage.getMetalsRadios()) {
+            if (radio.getText().equals(radiobutton.getRadioName())) {
+                radio.click();
+            }
+        }
+    }
+
+    @Step("I select {0} dropdown color")
+    public void selectDropdownColor(DropdownColors dropdownColor){
+        for(SelenideElement color : differentElementsPage.getColorDropdownMenuOptions()){
+            if(color.getText().equals(dropdownColor.getColorName())){
+                color.click();
+            }
+        }
+    }
+
+
     //    TABLE PAGES STEPS
+    @Step("I choose '{0}' value in entries quantity dropdown menu")
     public void chooseNewEntriesDropdownValue(String newValue) {
         for (SelenideElement value : tablePages.getShowEntriesValues()) {
             if (newValue.equals(value.getValue())) {
@@ -73,6 +115,7 @@ public class ActionSteps extends AbstractBaseSteps implements TestData {
         }
     }
 
+    @Step("I enter '{0}' in text search field")
     public void searchTextInSearchField(String text) {
         tablePages.getSearchField().setValue(text).pressEnter();
     }
